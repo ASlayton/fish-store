@@ -15,15 +15,18 @@ const changeButtonText = () => {
   });
 };
 
-$('#show-sale').click(() => {
-  filterFish();
-  changeButtonText();
-});
-
 // Add fish to "Basket"
 const moveToCart = (e) => {
   const fishCard = $(e.target).closest('.fish');
   $('#snagged').append(fishCard);
 };
 
-$('button.add').click(moveToCart);
+const bindEvents = () => {
+  $('button.add').click(moveToCart);
+  $('#show-sale').click(() => {
+    filterFish();
+    changeButtonText();
+  });
+};
+
+module.exports = bindEvents;
